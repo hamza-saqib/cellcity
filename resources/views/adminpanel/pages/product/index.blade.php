@@ -33,6 +33,9 @@
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
+
+        @foreach ($products as $product)
+
         <div class="col-md-3">
             <div class="ibox">
                 <div class="ibox-content product-box">
@@ -42,10 +45,10 @@
                     </div>
                     <div class="product-desc">
                         <span class="product-price">
-                            $10
+                            {{$product->sale_price}}
                         </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
+                        <small class="text-muted">{{$product->category->name}}</small>
+                        <a href="#" class="product-name"> {{$product->name}}</a>
 
 
 
@@ -60,6 +63,7 @@
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="col-md-3">
             <div class="ibox">
                 <div class="ibox-content product-box">
