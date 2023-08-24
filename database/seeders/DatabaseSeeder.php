@@ -8,6 +8,7 @@ use App\Models\Customer;
 use App\Models\ExpenseCategory;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductModel;
 use App\Models\Vendor;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -23,23 +24,23 @@ class DatabaseSeeder extends Seeder
     {
         Admin::create(['name' => 'Hamza Saqib', 'email' => 'mianhamza7262@gmail.com', 'role' => 'Super Admin',
         'phone' => '03239991999', 'profile_image' => 'profile_image_icon.jpg', 'password' => Hash::make('hamza7262')]);
-        Admin::create(['name' => 'Bilal', 'email' => 'bilalsardar41@gmail.com', 'role' => 'Super Admin',
-        'phone' => '03xxxxxxxx', 'profile_image' => 'profile_image_icon.jpg', 'password' => Hash::make('Bilal1998')]);
-        Admin::create(['name' => 'Hamza Shafique', 'email' => 'azubair210000@gmail.com', 'role' => 'Super Admin',
-        'phone' => '03xxxxxxxx', 'profile_image' => 'profile_image_icon.jpg', 'password' => Hash::make('bigbang21')]);
-        Admin::create(['name' => 'Arslan Rasheed', 'email' => 'arslanrasheed141@gmail.com', 'role' => 'Super Admin',
-        'phone' => '03231234567', 'profile_image' => 'profile_image_icon.jpg', 'password' => Hash::make('arslan@123')]);
-        Admin::create(['name' => 'Arslan Rasheed', 'email' => 'webdevelopers4u2u@gmail.com', 'role' => 'Super Admin',
-        'phone' => '03231234567', 'profile_image' => 'profile_image_icon.jpg', 'password' => Hash::make('admin@123')]);
+        Admin::create(['name' => 'Adeel Ahmed', 'email' => 'hafizadeel12@gmail.com', 'role' => 'Super Admin',
+        'phone' => '03231234567', 'profile_image' => 'profile_image_icon.jpg', 'password' => Hash::make('adeel@123')]);
 
         Account::create(['name'=>'Cash Counter', 'type'=>'Cash', 'as_off_date'=>date('Y-m-d'), 'opening_balance'=>0, 'balance'=>0, 'created_by'=>1]);
         Account::create(['name'=>'Bank Account', 'type'=>'Bank', 'as_off_date'=>date('Y-m-d'), 'opening_balance'=>0, 'balance'=>0, 'created_by'=>1]);
         Customer::create(['name'=>'Cash Customer', 'type'=>'Cash', 'created_by'=>1]);
         Vendor::create(['name'=>'Cash Vendor', 'type'=>'Cash', 'created_by'=>1]);
+
         ProductCategory::create(['name'=>'Mobile', 'created_by'=>1]);
-        ProductCategory::create(['name'=>'Bread', 'created_by'=>1]);
-        ProductCategory::create(['name'=>'Hot Drinks', 'created_by'=>1]);
-        ProductCategory::create(['name'=>'Cold Drinks', 'created_by'=>1]);
+        ProductCategory::create(['name'=>'Adapter', 'created_by'=>1]);
+        ProductCategory::create(['name'=>'Cable', 'created_by'=>1]);
+        ProductCategory::create(['name'=>'Smart Watch', 'created_by'=>1]);
+
+        ProductModel::create([
+            'name'=>'No Model',
+            'created_by'=>1
+        ]);
 
         // Product::create(['name' => 'Haleem Half (Chicken)', 'cost_price' => 80, 'sale_price' => 90, 'product_category_id' => 1, 'created_by' => 1]);
         // Product::create(['name' => 'Haleem Full (Chicken)', 'cost_price' => 130, 'sale_price' => 150, 'product_category_id' => 1, 'created_by' => 1]);
