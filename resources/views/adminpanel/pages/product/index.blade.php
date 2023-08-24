@@ -1,4 +1,4 @@
-@extends('adminpanel.layout.master')
+@extends('adminpanel.layout.website')
 <!-- ================================== EXTEND TITLE AND META TAGS ============================= -->
 @section('title-meta')
     <title>Inventory | Product List</title>
