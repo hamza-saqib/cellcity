@@ -123,8 +123,8 @@ class ProductController extends Controller
                 $image->move(public_path().'/storage/images/products', $name);
                 $data[] = $name;
             }
+            $inputs['images'] = json_encode($data);
         }
-        $inputs['images'] = json_encode($data);
         $inputs['created_by'] = Auth::guard('admin')->id();
         if($product->opening_qty != $inputs['opening_qty']){
             $no_of_products_sales = InvoiceDetail::join('invoices', 'invoices.id', '=', 'invoice_details.invoice_id')
