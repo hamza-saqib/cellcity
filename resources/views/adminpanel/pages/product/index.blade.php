@@ -42,7 +42,7 @@
                     </div>
                     <div class="product-desc">
                         <span class="product-price">
-                            {{Rs. $product->sale_price}}
+                            Rs. {{$product->sale_price}}
                         </span>
                         <small class="text-muted">{{$product->category->name}}</small>
                         <a href="#" class="product-name"> {{$product->name}}</a>
