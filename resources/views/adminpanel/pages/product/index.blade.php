@@ -37,8 +37,8 @@
             <div class="ibox">
                 <div class="ibox-content product-box">
 
-                    <div class="product-imitation">
-                        [ INFO ]
+                    <div class="product-imitation" style="padding: 0px !important">
+                        <img width="100%" height="100%" src="{{asset('storage/images/products')}}/{{json_decode($product->images)[1]}}" alt="">
                     </div>
                     <div class="product-desc">
                         <span class="product-price">
