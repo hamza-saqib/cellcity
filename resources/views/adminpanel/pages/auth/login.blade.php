@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Inventory | Admin Login</title>
+    <title>{{config('app.name')}} | Admin Login</title>
 
     <link href="{{asset('adminpanel')}}/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{asset('adminpanel')}}/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -18,15 +18,16 @@
 </head>
 
 <body class="gray-bg">
-    <div style="text-align: center; margin-top: 10px" >
-        {{-- <h1 class="logo-name" >Inventory</h1> --}}
-        <img src="{{asset('adminpanel/img/sardar-sons-logo.jpeg')}}" alt="" style="height: 300px; width: 350px;">
+    <div style="text-align: center">
+        <h1 class="logo-name" >{{config('app.name')}}</h1>
     </div>
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
 
 
-            <h3>Welcome to Inventory Management</h3>
+            <h3>Welcome to {{config('app.name')}} Management</h3>
+            {{-- <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views. --}}
+                <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <p>Login in. To see it in action.</p>
             <form class="m-t" method="POST" role="form" action="{{route('admin.login')}}">
