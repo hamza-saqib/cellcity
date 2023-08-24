@@ -68,7 +68,7 @@ der-bottom white-bg page-heading">
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>ID/Code</th>
+                                        <th>Code</th>
                                         <th>Name</th>
                                         {{-- <th>Model</th> --}}
                                         <th>Category</th>
@@ -91,7 +91,7 @@ der-bottom white-bg page-heading">
                                             @endif
                                             >
                                             <td>{{ $counter }}</td>
-                                            <td class="center">{{ sprintf('%04d', $product->id) }}</td>
+                                            <td class="center">{{ sprintf('%03d', $product->id) }}</td>
                                             <td class="center">{{ $product->name }}</td>
                                             {{-- <td class="center">{{ $product->model->name }}</td> --}}
                                             <td class="center">{{ $product->category->name }}</td>
