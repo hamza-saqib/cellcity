@@ -59,7 +59,7 @@ class ExpenseController extends Controller
         $inputs['created_by'] = Auth::guard('admin')->id();
         $expense = Expense::create($inputs);
         $account = Account::find($request->account_id);
-        Payment::create(['amount'=>intval($inputs['amount']), 'payment_date'=>date('Y-m-d'), 'group'=>'Out', 'note'=>'Created Auto By System',
+        Payment::create(['amount'=>intval($inputs['amount']), 'payment_date'=>$inputs['expense_date'], 'group'=>'Out', 'note'=>'Created Auto By System',
         'type'=>'Expense', 'expense_id'=>$expense->id, 'account_id'=>$account->id,  'created_by'=>Auth::guard('admin')->id()]);
         $current_balance = $account->balance;
         $account->balance = $current_balance - intval($inputs['amount']);
@@ -124,6 +124,7 @@ class ExpenseController extends Controller
             $expense->update($inputs);
             $payment = Payment::where('expense_id', $expense->id)->first();
             $payment->amount = intval($inputs['amount']);
+            $payment->payment_date = $inputs['expense_date'];
             $payment->save();
             return redirect()->back()->with('success', 'Created Successfuly !');
         }
