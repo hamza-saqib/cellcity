@@ -37,8 +37,8 @@
             <div class="ibox">
                 <div class="ibox-content product-box">
 
-                    <div class="product-imitation" style="padding: 0px !important">
-                        @if (isset($product->images))
+                    <div class="product-imitation" style="padding: 0px !important; height: 300px">
+                        @if (isset(json_decode($product->images)[1]))
                         <img width="100%" height="100%" src="{{asset('storage/images/products')}}/{{json_decode($product->images)[1]}}" alt="">
                         @else
 
