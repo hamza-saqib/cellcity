@@ -67,7 +67,7 @@
                 <th>Amount</th>
                 {{-- <th>Account</th> --}}
                 <th>Category</th>
-                <th>Created By</th>
+                <th>Description</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -83,7 +83,7 @@
                     <td class="center">{{$expense->amount}}</td>
                     {{-- <td class="center">{{$expense->account->name}}</td> --}}
                     <td class="center">{{$expense->category->name}}</td>
-                    <td class="center">{{$expense->creator->name}}</td>
+                    <td class="center">{{$expense->note}}</td>
 
                     <td>
                         <a href="{{ route('admin.expense.edit', $expense->id) }}">
@@ -109,7 +109,7 @@
                 <th>Amount</th>
                 {{-- <th>Account</th> --}}
                 <th>Category</th>
-                <th>Created By</th>
+                <th>Description</th>
                 <th>Action</th>
             </tr>
             </tfoot>
