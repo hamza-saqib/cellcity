@@ -158,7 +158,7 @@
 
 
         </div>
-        {{-- <div class="row">
+        <div class="row">
             @if ($paymentIn > $paymentOut)
             <div class="col-lg-3">
                 <div class="ibox">
@@ -207,7 +207,7 @@
 
 
 
-        </div> --}}
+        </div>
     </div>
 @endsection
 <!-- ======================================== FOOTER PAGE SCRIPT ======================================= -->
