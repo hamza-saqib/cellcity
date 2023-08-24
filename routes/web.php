@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Website
 //Product
-Route::prefix('cellcity/product')->name('web.product.')->group(function(){
+Route::prefix('products')->name('products.')->group(function(){
     Route::get('/index', [App\Http\Controllers\ProductController::class, 'index'])->name('index');
     Route::get('/show/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('show');
 });

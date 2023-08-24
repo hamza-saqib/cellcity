@@ -11,18 +11,19 @@
 <!-- ======================================== BODY CONTENT ====================================== -->
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2>E-commerce grid</h2>
+    <div class="col-lg-12">
+        <h2>{{config('app.name')}}</h2>
         <ol class="breadcrumb">
-            <li>
-                <a href="index.html">Home</a>
-            </li>
-            <li>
-                <a>E-commerce</a>
-            </li>
             <li class="active">
-                <strong>Products grid</strong>
+                <a href="{{route('products.index')}}">All Products</a>
             </li>
+
+            @foreach ($categories as $category)
+            <li>
+                <a>{{$category->name}}</a>
+            </li>
+            @endforeach
+
         </ol>
     </div>
     <div class="col-lg-2">

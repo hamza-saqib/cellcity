@@ -19,8 +19,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $categories = ProductCategory::all();
         $products = Product::with('category', 'creator', 'model')->orderby('id', 'desc')->get();
-        return view('adminpanel.pages.product.index', compact('products'));
+        return view('adminpanel.pages.product.index', compact('products', 'categories'));
     }
 
     /**
