@@ -116,7 +116,7 @@
                                                 tabindex="2" style="width:600px;" id="productSelect">
                                                 <option value="">Select Product</option>
                                                 @foreach ($products as $key => $product)
-                                                    <option value="{{ $key }}">{{ $product->code }} - {{ $product->name }}</option>
+                                                    <option value="{{ $key }}">{{ sprintf("%03d", $product->id) }} - {{ $product->name }} --- {{ $product->available_qty }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

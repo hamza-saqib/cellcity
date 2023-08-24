@@ -110,10 +110,10 @@
                 <th>Amount</th>
                 <th># Items</th>
                 <th>Customer</th>
-                <th>Discount</th>
+                <th>Disc.</th>
                 <th>Pre Balance</th>
                 <th>Cash Recieved</th>
-                <th>Created by</th>
+                {{-- <th>Created by</th> --}}
                 <th>Action</th>
             </tr>
             </thead>
@@ -133,7 +133,7 @@
                     <td class="center">{{$invoice->discount}}</td>
                     <td class="center">{{$invoice->pre_balance}}</td>
                     <td class="center">{{$invoice->cash_recieved}}</td>
-                    <td class="center">{{$invoice->createdBy->name}}</td>
+                    {{-- <td class="center">{{$invoice->createdBy->name}}</td> --}}
 
                     <td>
                         <a href="{{route('admin.sale_invoice.show', $invoice->id)}}">
@@ -163,10 +163,10 @@
                 <th>Amount</th>
                 <th># Items</th>
                 <th>Customer</th>
-                <th>Discount</th>
+                <th>Disc.</th>
                 <th>Pre Balance</th>
                 <th>Cash Recieved</th>
-                <th>Created by</th>
+                {{-- <th>Created by</th> --}}
                 <th>Action</th>
             </tr>
             </tfoot>
