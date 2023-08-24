@@ -2,9 +2,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    @yield('title-meta')
 
+    @yield('title-meta')
+    <meta name="robots" content="noindex,nofollow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{asset('adminpanel')}}/css/bootstrap.min.css" rel="stylesheet">
