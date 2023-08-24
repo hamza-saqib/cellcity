@@ -38,7 +38,9 @@
                 <div class="ibox-content product-box">
 
                     <div class="product-imitation" style="padding: 0px !important">
+                        @isset($product->images)
                         <img width="100%" height="100%" src="{{asset('storage/images/products')}}/{{json_decode($product->images)[1]}}" alt="">
+                        @endisset
                     </div>
                     <div class="product-desc">
                         <span class="product-price">
