@@ -20,8 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
+//Website
+//Product
+Route::prefix('cellcity/product')->name('web.product.')->group(function(){
+    Route::get('/index', [App\Http\Controllers\ProductController::class, 'index'])->name('index');
+    Route::get('/show/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('show');
+});
 //adminpanel routes//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/admin/login', [App\Http\Controllers\Adminpanel\Auth\LoginController::class, 'showLoginForm'])->name('admin.login');
