@@ -23,8 +23,10 @@ class DashboardrController extends Controller
         $expenses = Invoice::all();
         foreach ($expenses as $key => $expense) {
             $payment = Payment::where('invoice_id', $expense->id)->get()->first();
-            $payment->payment_date = $expense->issue_date;
-            $payment->save();
+            if($payment){
+                $payment->payment_date = $expense->issue_date;
+                $payment->save();
+            }
         }
         //return InvoiceDetail::where('product_id', 29)->orWhere('product_id', 30)
         //->orWhere('product_id', 32)->sum('sale_quantity');
