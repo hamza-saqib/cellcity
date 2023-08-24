@@ -20,14 +20,14 @@ class DashboardrController extends Controller
      */
     public function index()
     {
-        $expenses = Invoice::all();
-        foreach ($expenses as $key => $expense) {
-            $payment = Payment::where('invoice_id', $expense->id)->get()->first();
-            if($payment){
-                $payment->payment_date = $expense->issue_date;
-                $payment->save();
-            }
-        }
+        // $expenses = Invoice::all();
+        // foreach ($expenses as $key => $expense) {
+        //     $payment = Payment::where('invoice_id', $expense->id)->get()->first();
+        //     if($payment){
+        //         $payment->payment_date = $expense->issue_date;
+        //         $payment->save();
+        //     }
+        // }
         //return InvoiceDetail::where('product_id', 29)->orWhere('product_id', 30)
         //->orWhere('product_id', 32)->sum('sale_quantity');
         $totalSale = 0;
