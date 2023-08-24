@@ -1,8 +1,8 @@
 <div class="footer">
     <div class="pull-right">
-        support@pairprogrammers.pk
+        malhoc.inc@gmail.com
     </div>
     <div>
-        <strong>Copyright</strong> Pair Programmers &copy; 2021
+        <strong>Copyright</strong> Malhoc Inc. &copy; 2023
     </div>
 </div>
