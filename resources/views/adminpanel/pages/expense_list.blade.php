@@ -33,7 +33,7 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="ibox-content m-b-sm border-bottom">
             <div class="row">
-                <form action="{{route('admin.product.search')}}" method="POST">
+                <form action="{{route('admin.expense.search')}}" method="POST">
                     @csrf
                     <div class="col-sm-3">
                         <div class="form-group">
