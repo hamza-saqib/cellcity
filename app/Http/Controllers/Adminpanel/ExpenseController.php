@@ -20,7 +20,33 @@ class ExpenseController extends Controller
     public function index()
     {
         $expenses = Expense::with('category', 'creator')->orderby('id', 'desc')->get();
-        return view('adminpanel.pages.expense_list', compact('expenses'));
+        $categories = ExpenseCategory::all();
+
+        return view('adminpanel.pages.expense_list', compact('expenses', 'categories'));
+    }
+
+    public function search(Request $request)
+    {
+        $expenses = Expense::
+            when($request->filled('expense_category_id') , function ($query) use ($request){
+                if($request->expense_category_id == 'All'){
+                    return $query;
+                }
+                else {
+                    return $query->where('expense_category_id' , $request->expense_category_id );
+                }
+            })
+            ->when($request->filled('start_date') , function ($query) use ($request){
+                return $query->where('expense_date' , '>=', $request->start_date);
+
+            })
+            ->when($request->filled('end_date') , function ($query) use ($request){
+                return $query->where('expense_date' , '<=', $request->end_date);
+            })
+            ->orderby('id', 'desc')->get();
+        $request->flash();
+        $categories = ExpenseCategory::all();
+        return view('adminpanel.pages.expense_list', compact('expenses', 'categories'));
     }
 
     /**

@@ -21,7 +21,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('category', 'creator', 'model')->orderby('id', 'desc')->get();
-        return view('adminpanel.pages.product_list', compact('products'));
+        $categories = ProductCategory::all();
+        return view('adminpanel.pages.product_list', compact('products', 'categories'));
     }
 
     public function search(Request $request)
