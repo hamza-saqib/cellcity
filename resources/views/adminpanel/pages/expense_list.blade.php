@@ -55,7 +55,7 @@
                     <div class="form-group">
                         <label class="control-label" for="date_added">Category</label>
                         <div class="input-group date">
-                            <select class="form-control" name="product_category_id" required>
+                            <select class="form-control" name="expense_category_id" required>
                                 <option selected disabled value="All">All</option>
                                 @foreach ($categories as $category)
 
