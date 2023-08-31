@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adminpanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use App\Models\Product;
 use App\Models\ProductCategory;
@@ -21,6 +22,37 @@ class ProductController extends Controller
     {
         $products = Product::with('category', 'creator', 'model')->orderby('id', 'desc')->get();
         return view('adminpanel.pages.product_list', compact('products'));
+    }
+
+    public function search(Request $request)
+    {
+        $products = Product::
+            when($request->filled('product_category_id') , function ($query) use ($request){
+                if($request->product_category_id == 'All'){
+                    return $query;
+                }
+                else {
+                    return $query->where('product_category_id' , $request->product_category_id );
+                }
+            })
+            ->when($request->filled('old_or_purchased') , function ($query) use ($request){
+                if($request->old_or_purchased == 'All'){
+                    return $query;
+                }
+                else if($request->old_or_purchased == 'Old'){
+                    return $query->where('opening_qty' , '>', 0);
+                }
+                else if($request->old_or_purchased == 'Purchased'){
+                    return $query->where('opening_qty' , 0);
+                }
+                else{
+                    return $query;
+                }
+            })
+            ->orderby('id', 'desc')->get();
+        $request->flash();
+        $categories = ProductCategory::all();
+        return view('adminpanel.pages.product_list', compact('products', 'categories'));
     }
 
     /**
@@ -79,7 +111,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $categories = ProductCategory::all();
+        $invoices = Invoice::join('invoice_details', 'invoices.id', 'invoice_details.invoice_id')
+        ->where('product_id', $id)
+        ->get();
+        return view('adminpanel.pages.product_show', compact('product', 'categories', 'invoices'));
     }
 
     /**

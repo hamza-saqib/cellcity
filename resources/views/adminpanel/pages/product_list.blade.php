@@ -33,6 +33,52 @@ der-bottom white-bg page-heading">
 
 
     <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox-content m-b-sm border-bottom">
+            <div class="row">
+                <form action="{{route('admin.product.search')}}" method="POST">
+                    @csrf
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label" for="date_added">Category</label>
+                        <div class="input-group date">
+                            <select class="form-control" name="product_category_id" required>
+                                <option selected disabled value="All">All</option>
+                                @foreach ($categories as $category)
+
+                                    <option value="{{ $category->id }}">{{ $category->name }} </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="control-label"  >Total Cost</label>
+                        <div class="input-group date">
+
+                           <h2 style="color: rgb(11, 109, 189)"><strong id="total_sale"> 0 Rs</strong></h2>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="control-label"  >Estimated Sale</label>
+                        <div class="input-group date">
+
+                           <h2 style="color: rgb(11, 109, 189)"><strong id="total_sale"> 0 Rs</strong></h2>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+            </div>
+
+        </div>
         <div class="form-group">
             <a href="{{ route('admin.product.create') }}" class="btn btn-primary">+ Add Product</a>
         </div>
@@ -101,6 +147,10 @@ der-bottom white-bg page-heading">
                                             <td class="center">{{ $product->creator->name }}</td>
 
                                             <td>
+                                                <a href="{{ route('admin.product.show', $product->id) }}">
+                                                    <small class="label label-warning"><i
+                                                            class="fa"></i>View</small>
+                                                </a>
                                                 <a href="{{ route('admin.product.edit', $product->id) }}">
                                                     <small class="label label-primary"><i class="fa"></i>Edit</small>
                                                 </a>
@@ -146,6 +196,16 @@ der-bottom white-bg page-heading">
 
     <script>
         $(document).ready(function() {
+
+
+            var products = @json($products);
+            var totalCost = 0;
+            var totalSale = 0;
+            for (let i = 0; i < products.length; i++) {
+                totalCost += (products[i].cost_price * products[i].available_qty);
+            }
+            $('#total_sale').html(totalCost);
+
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [

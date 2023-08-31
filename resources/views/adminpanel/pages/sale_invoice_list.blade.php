@@ -37,7 +37,7 @@
             <div class="row">
                 <form action="{{route('admin.sale_invoice.search')}}" method="POST">
                     @csrf
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label" for="date_added">Start Date</label>
                         <div class="input-group date">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label" for="date_modified">End Date</label>
                         <div class="input-group date">
@@ -68,6 +68,16 @@
                         <div class="input-group date">
 
                            <h2 style="color: rgb(11, 109, 189)"><strong id="total_sale"> 0 Rs</strong></h2>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label class="control-label"  >Credit Amount</label>
+                        <div class="input-group date">
+
+                           <h2 style="color: rgb(11, 109, 189)"><strong id="total_credit"> 0 Rs</strong></h2>
                         </div>
 
                     </div>
@@ -108,7 +118,7 @@
                 <th>ID/Code</th>
                 <th>Date</th>
                 <th>Amount</th>
-                <th># Items</th>
+                <th>Ref. #</th>
                 <th>Customer</th>
                 <th>Disc.</th>
                 <th>Pre Balance</th>
@@ -128,7 +138,7 @@
                     <td class="center">{{sprintf("%05d", $invoice->id)}}</td>
                     <td class="center">{{date('d-M-Y', strtotime($invoice->issue_date))}}</td>
                     <td class="center">{{$invoice->amount}}</td>
-                    <td class="center">{{$invoice->no_of_items}}</td>
+                    <td class="center">{{$invoice->reference_no}}</td>
                     <td class="center">{{$invoice->customer->name}}</td>
                     <td class="center">{{$invoice->discount}}</td>
                     <td class="center">{{$invoice->pre_balance}}</td>
@@ -161,7 +171,7 @@
                 <th>ID/Code</th>
                 <th>Date</th>
                 <th>Amount</th>
-                <th># Items</th>
+                <th>Ref. #</th>
                 <th>Customer</th>
                 <th>Disc.</th>
                 <th>Pre Balance</th>
@@ -188,10 +198,13 @@
     $(document).ready(function(){
         var invoices = @json($invoices);
         var totalSale = 0;
+        var totalCredit = 0;
         for (let i = 0; i < invoices.length; i++) {
             totalSale = parseInt(totalSale) + parseInt(invoices[i].amount);
+            totalCredit = parseInt(totalCredit) + (parseInt(invoices[i].amount) - parseInt(invoices[i].cash_recieved))
         }
         $('#total_sale').html(totalSale);
+        $('#total_credit').html(totalCredit);
 
         $('.dataTables-example').DataTable({
             dom: '<"html5buttons"B>lTfgitp',

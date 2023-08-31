@@ -87,6 +87,8 @@ Route::prefix('admin')->name('admin.')->middleware('authAdmin')->group(function(
         Route::get('/edit/{id}', [App\Http\Controllers\Adminpanel\ProductController::class, 'edit'])->name('edit');
         Route::post('/update/{id}', [App\Http\Controllers\Adminpanel\ProductController::class, 'update'])->name('update')->middleware('isSuperAdmin');
         Route::get('/destroy/{id}', [App\Http\Controllers\Adminpanel\ProductController::class, 'destroy'])->name('destroy')->middleware('isSuperAdmin');
+        Route::post('/search-result', [App\Http\Controllers\Adminpanel\ProductController::class, 'search'])->name('search');
+
 
     });
 
