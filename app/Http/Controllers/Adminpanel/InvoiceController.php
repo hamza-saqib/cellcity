@@ -343,7 +343,8 @@ class InvoiceController extends Controller
             $invoice->description = $inputs['description'];
             $invoice->reference_no = $inputs['reference_no'];
             $invoice->discount = $inputs['discount'];
-
+            $invoice->issue_date = $inputs['issue_date'];
+            
             foreach ($invoice->detail as $key => $invoiceDetail) {
                 $product = Product::find($invoiceDetail->product_id);
                 $invoiceDetailTemp = InvoiceDetail::find($invoiceDetail->id);
