@@ -81,7 +81,7 @@
                         <label class="control-label"  >Total Cost</label>
                         <div class="input-group date">
 
-                           <h2 style="color: rgb(11, 109, 189)"><strong id="total_sale"> 0 Rs</strong></h2>
+                           <h2 style="color: rgb(11, 109, 189)"><strong id="total_expense"> 0 Rs</strong></h2>
                         </div>
 
                     </div>
@@ -192,6 +192,15 @@
 
     <script>
         $(document).ready(function() {
+
+            var expenses = @json($expenses);
+            var totalExpense = 0;
+            var totalSale = 0;
+            for (let i = 0; i < expenses.length; i++) {
+                totalExpense += parseInt(expenses[i].amount);
+            }
+            $('#total_expense').html(totalCost);
+
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
                 buttons: [

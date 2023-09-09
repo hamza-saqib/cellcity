@@ -344,7 +344,7 @@ class InvoiceController extends Controller
             $invoice->reference_no = $inputs['reference_no'];
             $invoice->discount = $inputs['discount'];
             $invoice->issue_date = $inputs['issue_date'];
-            
+
             foreach ($invoice->detail as $key => $invoiceDetail) {
                 $product = Product::find($invoiceDetail->product_id);
                 $invoiceDetailTemp = InvoiceDetail::find($invoiceDetail->id);
@@ -440,7 +440,7 @@ class InvoiceController extends Controller
             ->when($request->filled('end_date') , function ($query) use ($request){
                 return $query->where('issue_date' , '<=', $request->end_date);
             })
-            ->orderby('id', 'desc')->get();
+            ->orderby('issue_date', 'desc')->get();
             $request->flash();
         return view('adminpanel.pages.sale_invoice_list', compact('invoices'));
     }
