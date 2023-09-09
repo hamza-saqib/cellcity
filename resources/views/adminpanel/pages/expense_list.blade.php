@@ -199,7 +199,7 @@
             for (let i = 0; i < expenses.length; i++) {
                 totalExpense += parseInt(expenses[i].amount);
             }
-            $('#total_expense').html(totalCost);
+            $('#total_expense').html(totalExpense);
 
             $('.dataTables-example').DataTable({
                 dom: '<"html5buttons"B>lTfgitp',
